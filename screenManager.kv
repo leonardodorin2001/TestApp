@@ -1,0 +1,245 @@
+
+ScreenManager:
+    Home:
+    LogIn:
+    SingUp:
+    Index:
+    AddTask:
+    edittask:
+    deleteTask:
+
+<Home>:
+
+    name: 'Home'
+
+    MDLabel:
+        text: 'Hy, wellcome yo my form'
+        halign: 'center'
+        
+    
+    MDRectangleFlatButton:
+        text: 'Log in'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        on_press: root.manager.current = 'logIn'
+    
+    MDRectangleFlatButton:
+        text: 'Sing Up'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        on_press: root.manager.current = 'SingUp'
+        
+<SingUp>:
+    name: 'SingUp'
+
+    MDTopAppBar:
+        id: 'toolbar'
+        title: 'Sing Up page'
+        elevation: 4
+        pos_hint: {'top':1}
+
+    MDLabel:
+        text:'Enter below your data'
+        halign: 'center'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+    
+    MDTextField:
+        id: username
+        hint_text: 'Username'
+        helper_text: 'Insert the username'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint_x:None
+        width: 300
+
+    MDTextField:
+        id: password
+        hint_text: 'Password'
+        helper_text: 'Insert the Password'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        size_hint_x: None
+        width: 300
+
+    MDRectangleFlatButton:
+        text: 'Sing Up'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        on_release: root.SingUpFunction()
+        
+<LogIn>:
+    name: 'logIn'
+
+    MDTopAppBar:
+        id: 'toolbar'
+        title: 'Login page'
+        elevation: 4
+        pos_hint: {'top':1}
+
+    MDLabel:
+        id: userinfo
+        halign: 'center'
+
+        pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+
+
+    MDTextField:
+        id: username
+        hint_text: 'Enter the username'
+        helper_text: 'Insert the username'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint_x: None
+        width: 300
+
+    MDTextField:
+        id: password
+        hint_text: 'Password'
+        helper_text: 'Insert the Password'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        size_hint_x: None
+        width: 300
+
+    MDRectangleFlatButton:
+        text: 'Log in'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        on_release: root.LogIn()
+
+        
+    MDRectangleFlatButton:
+        text: 'Back'
+        pos_hint: {'center_x': 0.1, 'center_y': 0.1}
+        on_release: root.manager.current = 'Home'
+
+<Index>:
+    name: 'index'
+    
+    MDTopAppBar:
+        id: name_user
+        title: ''
+        elevation: 4
+        pos_hint: {'top':1}
+
+    BoxLayout:
+        width: 300
+        
+        MDFloatingActionButton:
+            icon: "truck-plus"
+            pos_hint: {'center_x': 0.1, 'center_y': 0.85}
+            md_bg_color: app.theme_cls.primary_color
+            on_press: root.manager.current = 'addTask'
+
+    BoxLayout:
+        id: table
+        pos_hint: {'center_y': 0.7}
+
+<AddTask>:
+    name: 'addTask'
+        
+
+    MDTopAppBar:
+        id: 'toolbar'
+        title: 'Create task'
+        elevation: 6
+        pos_hint: {'top':1}
+
+        MDFloatingActionButton:
+            icon: 'arrow-left'
+            md_bg_color: app.theme_cls.primary_color
+            size_hint_x:None
+            size_hint_y: 1
+            pos_hint: {'center_x': 0.9}
+            on_press: root.manager.current = 'index'
+
+
+    MDTextField:
+        id: task_name
+        hint_text: 'Task name'
+        helper_text: 'Insert the Task name'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint_x:None
+        width: 300
+
+    MDTextField:
+        id: infoTask
+        hint_text: 'Info of task'
+        helper_text: 'Insert the information about task'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        size_hint_x:None
+        width: 300
+
+    
+    MDRectangleFlatButton:
+        text: 'Add task'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        on_release: root.add_task()
+
+<edittask>:
+    name: 'editTask'
+
+    MDLabel:
+        id: id_task
+        halign:'center'
+        pos_hint: {'center_x':0.5, 'center_y':0.8}
+
+    MDTopAppBar:
+        id: edit_task
+        title: ''
+        elevation: 4
+        pos_hint: {'top':1}
+          
+        MDFloatingActionButton:
+            icon: 'arrow-left'
+            md_bg_color: app.theme_cls.primary_color
+            size_hint_x:None
+            size_hint_y: 1
+            pos_hint: {'center_x': 0.9}
+            on_press: root.manager.current = 'index'
+
+
+    MDTextField:
+        id: edit_task_name
+        hint_text: 'Task name'
+        helper_text: 'Insert the Task name'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint_x:None
+        width: 300
+
+    MDTextField:
+        id: edit_task_info
+        hint_text: 'Info of task'
+        helper_text: 'Insert the information about task'
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        size_hint_x:None
+        width: 300
+
+    MDRectangleFlatButton:
+        text: 'Edit task'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        on_release: root.edit_task()
+
+    
+<deleteTask>:
+    name: 'delete_task'
+
+    MDLabel:
+        id: id_label_delete
+        halign:'center'
+        pos_hint: {'center_x':0.5, 'center_y':0.8}
+
+    MDLabel:
+        id: info_task_delete
+        text_size: self.size
+        
+        valign: 'middle'
+        halign:'center'
+
+        pos_hint: {'center_x':0.5, 'center_y':0.6}
+
+    MDRectangleFlatButton:
+        text: 'Delete task'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        on_release: root.delete_task()
+
