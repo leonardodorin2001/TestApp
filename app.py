@@ -215,5 +215,4 @@ class App(MDApp):
 if __name__ == "__main__":
     Window.size= (360,640)
     Base.metadata.create_all(engine)
-
     App().run()
